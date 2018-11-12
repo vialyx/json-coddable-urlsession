@@ -10,12 +10,12 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    let repository = Repository(apiClient: APIClient())
+    let repository = Repository(apiClient: APIClient(), database: Database())
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        repository.getFlights { (result) in
+        repository.getFlights(.remote) { (result) in
             switch result {
             case .success(let items):
                 print("\(self) retrive flights: \(items)")
